@@ -3,6 +3,7 @@
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
 	using System.Collections.Generic;
 	using System.Linq;
+	using TestDome.Tasks;
 
 	[TestClass]
 	public class FoldersTests
@@ -19,10 +20,10 @@
 					"</folder>" +
 					"<folder name=\"users\" />" +
 				"</folder>";
-			var expectedNames = new List<string> { "users", "uninstall information" };
+			List<string> expectedNames = new List<string> { "users", "uninstall information" };
 
 			// Act.
-			var actualNames = Folders.FolderNames(xml, 'u').Select(_ => _).ToList();
+			List<string> actualNames = Folders.FolderNames(xml, 'u').Select(_ => _).ToList();
 
 			// Assert.
 			CollectionAssert.AreEqual(expectedNames, actualNames);

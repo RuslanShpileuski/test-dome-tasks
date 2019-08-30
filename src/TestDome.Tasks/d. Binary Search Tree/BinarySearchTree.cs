@@ -17,14 +17,41 @@
 
 namespace TestDome.Tasks
 {
+	/// <summary>
+	/// The tree node.
+	/// </summary>
 	public class Node
 	{
+		/// <summary>
+		/// Gets or sets the value.
+		/// </summary>
+		/// <value>
+		/// The value.
+		/// </value>
 		public int Value { get; set; }
 
+		/// <summary>
+		/// Gets or sets the left.
+		/// </summary>
+		/// <value>
+		/// The left.
+		/// </value>
 		public Node Left { get; set; }
 
+		/// <summary>
+		/// Gets or sets the right.
+		/// </summary>
+		/// <value>
+		/// The right.
+		/// </value>
 		public Node Right { get; set; }
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Node"/> class.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <param name="left">The left.</param>
+		/// <param name="right">The right.</param>
 		public Node(int value, Node left, Node right)
 		{
 			Value = value;
@@ -33,8 +60,19 @@ namespace TestDome.Tasks
 		}
 	}
 
+	/// <summary>
+	/// The binary search tree.
+	/// </summary>
 	public class BinarySearchTree
 	{
+		/// <summary>
+		/// Determines whether this root contains the value.
+		/// </summary>
+		/// <param name="root">The root.</param>
+		/// <param name="value">The value.</param>
+		/// <returns>
+		///   <c>true</c> if [contains] [the specified root]; otherwise, <c>false</c>.
+		/// </returns>
 		public bool Contains(Node root, int value)
 		{
 			if (root.Value == value)

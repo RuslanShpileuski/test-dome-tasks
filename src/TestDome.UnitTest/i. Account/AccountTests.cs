@@ -11,16 +11,16 @@
 		{
 			// Arrange.
 			// Act.
-			var writerDelete = Account.Access.Writer.HasFlag(Account.Access.Delete);
-			var writerSubmit = Account.Access.Writer.HasFlag(Account.Access.Submit);
-			var writerModify = Account.Access.Writer.HasFlag(Account.Access.Modify);
+			bool writerDelete = Account.Access.Writer.HasFlag(Account.Access.Delete);
+			bool writerSubmit = Account.Access.Writer.HasFlag(Account.Access.Submit);
+			bool writerModify = Account.Access.Writer.HasFlag(Account.Access.Modify);
 
-			var editorDelete = Account.Access.Editor.HasFlag(Account.Access.Delete);
-			var editorPublish = Account.Access.Editor.HasFlag(Account.Access.Publish);
-			var editorComment = Account.Access.Editor.HasFlag(Account.Access.Comment);
+			bool editorDelete = Account.Access.Editor.HasFlag(Account.Access.Delete);
+			bool editorPublish = Account.Access.Editor.HasFlag(Account.Access.Publish);
+			bool editorComment = Account.Access.Editor.HasFlag(Account.Access.Comment);
 
-			var ownerWriter = Account.Access.Owner.HasFlag(Account.Access.Writer);
-			var ownerEditor = Account.Access.Owner.HasFlag(Account.Access.Editor);
+			bool ownerWriter = Account.Access.Owner.HasFlag(Account.Access.Writer);
+			bool ownerEditor = Account.Access.Owner.HasFlag(Account.Access.Editor);
 
 			// Assert.
 			Assert.IsFalse(writerDelete);

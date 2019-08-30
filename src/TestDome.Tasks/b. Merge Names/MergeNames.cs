@@ -11,20 +11,20 @@ namespace TestDome.Tasks
 {
 	using System.Linq;
 
+	/// <summary>
+	/// The merge names.
+	/// </summary>
 	public class MergeNames
 	{
+		/// <summary>
+		/// Uniques the names.
+		/// </summary>
+		/// <param name="names1">The names1.</param>
+		/// <param name="names2">The names2.</param>
+		/// <returns>The result.</returns>
 		public string[] UniqueNames(string[] names1, string[] names2)
 		{
-			var tempNames1 = names1.Distinct().ToList();
-
-			tempNames1.AddRange(names2.Distinct());
-
-			return tempNames1.Distinct().ToArray();
-		}
-
-		public bool IsNullOrEmpty(string[] arr)
-		{
-			return (arr == null) && arr.Length == 0;
+			return names1.Concat(names2).Distinct().ToArray();
 		}
 	}
 }

@@ -14,11 +14,11 @@
 			Node n3 = new Node(3, null, null);
 			Node n2 = new Node(2, n1, n3);
 
-			var bst = new BinarySearchTree();
+			BinarySearchTree bst = new BinarySearchTree();
 
 			// Act.
-			var firstActual = bst.Contains(n2, 3);
-			var secondActual = bst.Contains(n2, 4);
+			bool firstActual = bst.Contains(n2, 3);
+			bool secondActual = bst.Contains(n2, 4);
 
 			// Assert.
 			Assert.IsTrue(firstActual);

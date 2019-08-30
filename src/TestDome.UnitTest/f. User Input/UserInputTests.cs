@@ -1,6 +1,7 @@
 ﻿namespace TestDome.UnitTests
 {
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
+	using TestDome.Tasks;
 
 	[TestClass]
 	public class UserInputTests
@@ -16,7 +17,7 @@
 			string expected = "10";
 
 			// Act.
-			var actual = input.GetValue();
+			string actual = input.GetValue();
 
 			// Assert.
 			Assert.AreEqual(expected, actual);

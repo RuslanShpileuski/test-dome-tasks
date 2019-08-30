@@ -23,19 +23,60 @@ namespace TestDome.Tasks.Flags
 {
 	using System;
 
+	/// <summary>
+	/// The account.
+	/// </summary>
 	public class Account
 	{
+		/// <summary>
+		/// The access enum.
+		/// </summary>
 		[Flags]
 		public enum Access
 		{
+			/// <summary>
+			/// The none.
+			/// </summary>
 			None = 0,
+
+			/// <summary>
+			/// The delete.
+			/// </summary>
 			Delete = 1 << 0,
+
+			/// <summary>
+			/// The publish.
+			/// </summary>
 			Publish = 1 << 1,
+
+			/// <summary>
+			/// The submit.
+			/// </summary>
 			Submit = 1 << 2,
+
+			/// <summary>
+			/// The comment.
+			/// </summary>
 			Comment = 1 << 3,
+
+			/// <summary>
+			/// The modify.
+			/// </summary>
 			Modify = 1 << 4,
+
+			/// <summary>
+			/// The writer.
+			/// </summary>
 			Writer = Submit | Modify,
+
+			/// <summary>
+			/// The editor.
+			/// </summary>
 			Editor = Delete | Publish | Comment,
+
+			/// <summary>
+			/// The owner.
+			/// </summary>
 			Owner = Writer | Editor
 		}
 	}

@@ -8,8 +8,19 @@
 */
 namespace TestDome.Tasks
 {
+	/// <summary>
+	/// The sorted search.
+	/// </summary>
 	public class SortedSearch
 	{
+		/// <summary>
+		/// Finds the mid.
+		/// </summary>
+		/// <param name="sortedArray">The sorted array.</param>
+		/// <param name="left">The left.</param>
+		/// <param name="right">The right.</param>
+		/// <param name="lessThan">The less than.</param>
+		/// <returns></returns>
 		private int FindMid(int[] sortedArray, int left, int right, int lessThan)
 		{
 			int middle = left + (right - left) / 2;
@@ -45,10 +56,17 @@ namespace TestDome.Tasks
 			return FindMid(sortedArray, left, right, lessThan);
 		}
 
+		/// <summary>
+		/// Counts the numbers.
+		/// </summary>
+		/// <param name="sortedArray">The sorted array.</param>
+		/// <param name="lessThan">The less than.</param>
+		/// <returns></returns>
 		public int CountNumbers(int[] sortedArray, int lessThan)
 		{
 			int left = 0;
 			int right = sortedArray.Length - 1;
+
 			return FindMid(sortedArray, left, right, lessThan);
 		}
 	}

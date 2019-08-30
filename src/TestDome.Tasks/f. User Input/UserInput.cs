@@ -25,31 +25,55 @@
 	</example>
 */
 
-using System;
-using System.Text;
-
-public class TextInput
+namespace TestDome.Tasks
 {
-	protected StringBuilder builder = new StringBuilder();
+	using System.Text;
 
-	public virtual void Add(char c)
+	/// <summary>
+	/// The text input.
+	/// </summary>
+	public class TextInput
 	{
-		builder.Append(c);
-	}
+		/// <summary>
+		/// The builder.
+		/// </summary>
+		protected StringBuilder builder = new StringBuilder();
 
-	public string GetValue()
-	{
-		return this.builder.ToString();
-	}
-}
-
-public class NumericInput : TextInput
-{
-	public override void Add(char c)
-	{
-		if (Char.IsDigit(c))
+		/// <summary>
+		/// Adds the specified value.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		public virtual void Add(char value)
 		{
-			this.builder.Append(c);
+			builder.Append(value);
+		}
+
+		/// <summary>
+		/// Gets the value.
+		/// </summary>
+		/// <returns>The value.</returns>
+		public string GetValue()
+		{
+			return builder.ToString();
+		}
+	}
+
+	/// <summary>
+	/// The numeric input.
+	/// </summary>
+	/// <seealso cref="TestDome.Tasks.TextInput" />
+	public class NumericInput : TextInput
+	{
+		/// <summary>
+		/// Adds the specified value.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		public override void Add(char value)
+		{
+			if (char.IsDigit(value))
+			{
+				builder.Append(value);
+			}
 		}
 	}
 }

@@ -8,42 +8,60 @@
 	For example, the following code prints "True" as both songs point to each other.
 */
 
-using System;
-
-public class Song
+namespace TestDome.Tasks
 {
-	private string name;
-	public Song NextSong { get; set; }
-
-	public Song(string name)
+	/// <summary>
+	/// The song.
+	/// </summary>
+	public class Song
 	{
-		this.name = name;
-	}
+		private readonly string name;
 
-	public bool IsRepeatingPlaylist()
-	{
-		Song slow = this.NextSong;
+		/// <summary>
+		/// Gets or sets the next song.
+		/// </summary>
+		/// <value>
+		/// The next song.
+		/// </value>
+		public Song NextSong { get; set; }
 
-		Song fast = (slow == null) ? null : slow.NextSong;
-
-		while (fast != null)
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Song"/> class.
+		/// </summary>
+		/// <param name="name">The name.</param>
+		public Song(string name)
 		{
-			if (slow == this || slow == fast)
-			{
-				return true;
-			}
-
-			slow = slow.NextSong;
-			fast = fast.NextSong;
-
-			if (fast != null)
-			{
-				fast = fast.NextSong;
-			}
+			this.name = name;
 		}
 
-		return false;
-	}
+		/// <summary>
+		/// Determines whether [is repeating playlist].
+		/// </summary>
+		/// <returns>
+		///   <c>true</c> if [is repeating playlist]; otherwise, <c>false</c>.
+		/// </returns>
+		public bool IsRepeatingPlaylist()
+		{
+			Song slow = NextSong;
+			Song fast = slow?.NextSong;
 
-	
+			while (fast != null)
+			{
+				if (slow == this || slow == fast)
+				{
+					return true;
+				}
+
+				slow = slow.NextSong;
+				fast = fast.NextSong;
+
+				if (fast != null)
+				{
+					fast = fast.NextSong;
+				}
+			}
+
+			return false;
+		}
+	}
 }

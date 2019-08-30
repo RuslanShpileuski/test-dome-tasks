@@ -17,18 +17,26 @@ namespace TestDome.Tasks
 	using System;
 	using System.Collections.Generic;
 
+	/// <summary>
+	/// The two sum.
+	/// </summary>
 	public class TwoSum
 	{
+		/// <summary>
+		/// Finds the two sum.
+		/// </summary>
+		/// <param name="list">The list.</param>
+		/// <param name="sum">The sum.</param>
+		/// <returns></returns>
 		public Tuple<int, int> FindTwoSum(IList<int> list, int sum)
 		{
-			var dict = new Dictionary<int, int>();
+			Dictionary<int, int> dict = new Dictionary<int, int>();
 
-			for (var i = 0; i < list.Count; i++)
+			for (int i = 0; i < list.Count; i++)
 			{
-				var diff = sum - list[i];
-				int j;
+				int diff = sum - list[i];
 
-				if (dict.TryGetValue(diff, out j))
+				if (dict.TryGetValue(diff, out int j))
 				{
 					return Tuple.Create(j, i);
 				}

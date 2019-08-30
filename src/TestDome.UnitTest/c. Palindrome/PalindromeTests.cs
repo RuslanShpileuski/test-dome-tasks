@@ -1,6 +1,7 @@
 ﻿namespace TestDome.UnitTests
 {
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
+	using TestDome.Tasks;
 
 	[TestClass]
 	public class PalindromeTests
@@ -9,7 +10,7 @@
 		public void Palindrome_IsPalindorme_VariousCases()
 		{
 			// Arrange.
-			var palindrome = new Palindrome();
+			Palindrome palindrome = new Palindrome();
 
 			// Act.
 			bool firstActual = palindrome.IsPalindrome("Deleveled");

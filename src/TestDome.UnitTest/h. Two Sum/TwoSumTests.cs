@@ -12,12 +12,12 @@
 		public void TwoSum_FindTwoSum()
 		{
 			// Arrange.
-			var twoSum = new TwoSum();
-			var numbers = new List<int>() { 3, 1, 5, 7, 5, 9 };
-			var expected = Tuple.Create(0, 3);
+			TwoSum twoSum = new TwoSum();
+			List<int> numbers = new List<int>() { 3, 1, 5, 7, 5, 9 };
+			Tuple<int, int> expected = Tuple.Create(0, 3);
 
 			// Act.
-			var actual = twoSum.FindTwoSum(numbers, 10);
+			Tuple<int, int> actual = twoSum.FindTwoSum(numbers, 10);
 
 			// Assert.
 			Assert.AreEqual(expected, actual);

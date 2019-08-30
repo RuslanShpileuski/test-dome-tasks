@@ -29,20 +29,42 @@ namespace TestDome.Tasks
 {
 	using System;
 
+	/// <summary>
+	/// The path.
+	/// </summary>
 	public class Path
 	{
+		/// <summary>
+		/// Gets the current path.
+		/// </summary>
+		/// <value>
+		/// The current path.
+		/// </value>
 		public string CurrentPath { get; private set; }
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Path"/> class.
+		/// </summary>
+		/// <param name="path">The path.</param>
 		public Path(string path)
 		{
-			this.CurrentPath = path;
+			CurrentPath = path;
 		}
 
+		/// <summary>
+		/// Cds the specified new path.
+		/// </summary>
+		/// <param name="newPath">The new path.</param>
+		/// <exception cref="NotImplementedException">Waiting to be implemented.</exception>
 		public void Cd(string newPath)
 		{
 			throw new NotImplementedException("Waiting to be implemented.");
 		}
 
+		/// <summary>
+		/// Tests the specified arguments.
+		/// </summary>
+		/// <param name="args">The arguments.</param>
 		public void Test(string[] args)
 		{
 			Path path = new Path("/a/b/c/d");

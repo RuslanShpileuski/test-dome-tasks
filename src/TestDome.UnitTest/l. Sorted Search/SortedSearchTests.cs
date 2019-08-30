@@ -10,10 +10,10 @@
 		public void SortedSearch_CountNumbers()
 		{
 			// Arrange.
-			var sortedSearch = new SortedSearch();
+			SortedSearch sortedSearch = new SortedSearch();
 
 			// Act.
-			var actual = sortedSearch.CountNumbers(new int[] { 1, 3, 5, 7 }, 4);
+			int actual = sortedSearch.CountNumbers(new int[] { 1, 3, 5, 7 }, 4);
 
 			// Assert.
 			Assert.AreEqual(2, actual);

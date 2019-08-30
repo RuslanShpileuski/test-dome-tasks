@@ -12,76 +12,140 @@
 */
 namespace TestDome.Tasks
 {
+	/// <summary>
+	/// The train node.
+	/// </summary>
 	public class TrainNode
 	{
+		/// <summary>
+		/// Gets or sets the value.
+		/// </summary>
+		/// <value>
+		/// The value.
+		/// </value>
 		public int Value { get; set; }
+
+		/// <summary>
+		/// Gets or sets the left train.
+		/// </summary>
+		/// <value>
+		/// The left train.
+		/// </value>
 		public TrainNode LeftTrain { get; set; }
+
+		/// <summary>
+		/// Gets or sets the rigth train.
+		/// </summary>
+		/// <value>
+		/// The rigth train.
+		/// </value>
 		public TrainNode RigthTrain { get; set; }
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="TrainNode"/> class.
+		/// </summary>
+		/// <param name="value">The value.</param>
 		public TrainNode(int value)
 		{
-			this.Value = value;
-			this.LeftTrain = null;
-			this.RigthTrain = null;
+			Value = value;
+			LeftTrain = null;
+			RigthTrain = null;
 		}
 
+		/// <summary>
+		/// Sets the right train.
+		/// </summary>
+		/// <param name="right">The right.</param>
 		public void SetRightTrain(TrainNode right)
 		{
-			this.RigthTrain = right;
+			RigthTrain = right;
 		}
 
+		/// <summary>
+		/// Sets the left train.
+		/// </summary>
+		/// <param name="left">The left.</param>
 		public void SetLeftTrain(TrainNode left)
 		{
-			this.LeftTrain = left;
+			LeftTrain = left;
 		}
 	}
-	public struct TrainComposition
+
+	/// <summary>
+	/// The train composition.
+	/// </summary>
+	public class TrainComposition
 	{
+		/// <summary>
+		/// Gets or sets the leftmost.
+		/// </summary>
+		/// <value>
+		/// The leftmost.
+		/// </value>
 		private TrainNode Leftmost { get; set; }
+
+		/// <summary>
+		/// Gets or sets the rightmost.
+		/// </summary>
+		/// <value>
+		/// The rightmost.
+		/// </value>
 		private TrainNode Rightmost { get; set; }
 
+		/// <summary>
+		/// Attaches the wagon from left.
+		/// </summary>
+		/// <param name="wagonId">The wagon identifier.</param>
 		public void AttachWagonFromLeft(int wagonId)
 		{
-			var tmp = new TrainNode(wagonId);
+			TrainNode tmp = new TrainNode(wagonId);
 
-			if (this.Leftmost != null)
+			if (Leftmost != null)
 			{
-				this.Leftmost.SetLeftTrain(tmp);
-				tmp.SetRightTrain(this.Leftmost);
-				this.Leftmost = tmp;
+				Leftmost.SetLeftTrain(tmp);
+				tmp.SetRightTrain(Leftmost);
+				Leftmost = tmp;
 			}
 			else
 			{
-				this.Leftmost = tmp;
-				this.Rightmost = tmp;
+				Leftmost = tmp;
+				Rightmost = tmp;
 			}
 		}
 
+		/// <summary>
+		/// Attaches the wagon from right.
+		/// </summary>
+		/// <param name="wagonId">The wagon identifier.</param>
 		public void AttachWagonFromRight(int wagonId)
 		{
-			var tmp = new TrainNode(wagonId);
+			TrainNode tmp = new TrainNode(wagonId);
 
-			if (this.Rightmost != null)
+			if (Rightmost != null)
 			{
-				this.Rightmost.SetRightTrain(tmp);
-				tmp.SetLeftTrain(this.Rightmost);
-				this.Rightmost = tmp;
+				Rightmost.SetRightTrain(tmp);
+				tmp.SetLeftTrain(Rightmost);
+				Rightmost = tmp;
 			}
 			else
 			{
-				this.Leftmost = tmp;
-				this.Rightmost = tmp;
+				Leftmost = tmp;
+				Rightmost = tmp;
 			}
 		}
 
+		/// <summary>
+		/// Detaches the wagon from left.
+		/// </summary>
+		/// <returns></returns>
 		public int DetachWagonFromLeft()
 		{
 			TrainNode tmp;
 
-			if (this.Leftmost != null)
+			if (Leftmost != null)
 			{
-				tmp = this.Leftmost;
-				this.Leftmost = this.Leftmost.RigthTrain;
+				tmp = Leftmost;
+				Leftmost = Leftmost.RigthTrain;
 				int tmpValue = tmp.Value;
 				return tmpValue;
 			}
@@ -91,14 +155,18 @@ namespace TestDome.Tasks
 			}
 		}
 
+		/// <summary>
+		/// Detaches the wagon from right.
+		/// </summary>
+		/// <returns></returns>
 		public int DetachWagonFromRight()
 		{
 			TrainNode tmp;
 
-			if (this.Rightmost != null)
+			if (Rightmost != null)
 			{
-				tmp = this.Rightmost;
-				this.Rightmost = this.Rightmost.LeftTrain;
+				tmp = Rightmost;
+				Rightmost = Rightmost.LeftTrain;
 				int tmpValue = tmp.Value;
 				return tmpValue;
 			}

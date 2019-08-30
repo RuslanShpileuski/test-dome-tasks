@@ -10,13 +10,13 @@
 		public void TrainComposition_DetachWagonFromRight_DetachWagonFromLeft()
 		{
 			// Arrange.
-			var trainComposition = new TrainComposition();
+			TrainComposition trainComposition = new TrainComposition();
 			trainComposition.AttachWagonFromLeft(7);
 			trainComposition.AttachWagonFromLeft(13);
 
 			// Act.
-			var actualRight = trainComposition.DetachWagonFromRight(); // 7 
-			var actualLeft = trainComposition.DetachWagonFromLeft(); // 13
+			int actualRight = trainComposition.DetachWagonFromRight(); // 7 
+			int actualLeft = trainComposition.DetachWagonFromLeft(); // 13
 
 			// Assert.
 			Assert.AreEqual(7, actualRight);

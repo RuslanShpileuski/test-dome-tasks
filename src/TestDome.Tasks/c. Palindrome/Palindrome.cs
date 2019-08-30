@@ -8,20 +8,43 @@
 	For example, IsPalindrome("Deleveled") should return true as character case should be ignored, resulting in "deleveled", which is a palindrome since it reads the same backward and forward.
 */
 
-public class Palindrome
+namespace TestDome.Tasks
 {
-	public bool IsPalindrome(string word)
+	/// <summary>
+	/// The palindrome class.
+	/// </summary>
+	public class Palindrome
 	{
-		int ln = word.Length;
-
-		for (int i = 0; i < ln / 2; i++)
+		/// <summary>
+		/// Determines whether the specified word is palindrome.
+		/// </summary>
+		/// <param name="word">The word.</param>
+		/// <returns>
+		///   <c>true</c> if the specified word is palindrome; otherwise, <c>false</c>.
+		/// </returns>
+		public bool IsPalindrome(string word)
 		{
-			if (char.ToLower(word[i]) != char.ToLower(word[ln - i - 1]))
+			int min = 0;
+			int max = word.Length - 1;
+
+			while (true)
 			{
-				return false;
+				if (min > max)
+				{
+					return true;
+				}
+
+				char left = word[min];
+				char right = word[max];
+
+				if (char.ToLower(left) != char.ToLower(right))
+				{
+					return false;
+				}
+
+				min++;
+				max--;
 			}
 		}
-
-		return true;
 	}
 }

@@ -13,49 +13,85 @@
 
 namespace TestDome.Tasks
 {
-	using System.Collections.Generic;
 	using System;
+	using System.Collections.Generic;
 
+	/// <summary>
+	/// The alert service.
+	/// </summary>
 	public class AlertService
 	{
 		private readonly IAlertDAO alertDao;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="AlertService"/> class.
+		/// </summary>
+		/// <param name="alertDao">The alert DAO.</param>
 		public AlertService(IAlertDAO alertDao)
 		{
 			this.alertDao = alertDao;
 		}
 
+		/// <summary>
+		/// Raises the alert.
+		/// </summary>
+		/// <returns></returns>
 		public Guid RaiseAlert()
 		{
-			return this.alertDao.AddAlert(DateTime.Now);
+			return alertDao.AddAlert(DateTime.Now);
 		}
 
+		/// <summary>
+		/// Gets the alert time.
+		/// </summary>
+		/// <param name="id">The identifier.</param>
+		/// <returns>The datetime value.</returns>
 		public DateTime GetAlertTime(Guid id)
 		{
-			return this.alertDao.GetAlert(id);
+			return alertDao.GetAlert(id);
 		}
 	}
 
+	/// <summary>
+	/// The alert DAO.
+	/// </summary>
+	/// <seealso cref="TestDome.Tasks.IAlertDAO" />
 	public class AlertDAO : IAlertDAO
 	{
 		private readonly Dictionary<Guid, DateTime> alerts = new Dictionary<Guid, DateTime>();
 
+		/// <inheritdoc />
 		public Guid AddAlert(DateTime time)
 		{
 			Guid id = Guid.NewGuid();
-			this.alerts.Add(id, time);
+			alerts.Add(id, time);
 			return id;
 		}
 
+		/// <inheritdoc />
 		public DateTime GetAlert(Guid id)
 		{
-			return this.alerts[id];
+			return alerts[id];
 		}
 	}
 
+	/// <summary>
+	/// The alert DAO interface.
+	/// </summary>
 	public interface IAlertDAO
 	{
+		/// <summary>
+		/// Adds the alert.
+		/// </summary>
+		/// <param name="time">The time.</param>
+		/// <returns></returns>
 		Guid AddAlert(DateTime time);
+
+		/// <summary>
+		/// Gets the alert.
+		/// </summary>
+		/// <param name="id">The identifier.</param>
+		/// <returns></returns>
 		DateTime GetAlert(Guid id);
 	}
 }

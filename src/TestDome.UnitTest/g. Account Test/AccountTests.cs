@@ -19,7 +19,7 @@ namespace TestDome.UnitTests
 	[TestClass]
 	public class Tester
 	{
-		private double epsilon = 1e-6;
+		private readonly double epsilon = 1e-6;
 
 		[TestMethod]
 		public void Account_CannotHaveNegativeOverdraftLimit()

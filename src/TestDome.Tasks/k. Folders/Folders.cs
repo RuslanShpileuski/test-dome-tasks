@@ -18,47 +18,84 @@
 	the function should return "uninstall information" and "users" (in any order).
 */
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Xml.Serialization;
-
-[Serializable, XmlRoot("folder")]
-public class Folder
+namespace TestDome.Tasks
 {
-	[XmlAttribute("name")]
-	public string Name { get; set; }
+	using System;
+	using System.Collections.Generic;
+	using System.IO;
+	using System.Linq;
+	using System.Xml.Serialization;
 
-	[XmlElement("folder")]
-	public List<Folder> SubFolders { get; set; }
-
-	public bool StartsWith(string startingString)
+	/// <summary>
+	/// The folder.
+	/// </summary>
+	[Serializable, XmlRoot("folder")]
+	public class Folder
 	{
-		return Name.StartsWith(startingString);
-	}
+		/// <summary>
+		/// Gets or sets the name.
+		/// </summary>
+		/// <value>
+		/// The name.
+		/// </value>
+		[XmlAttribute("name")]
+		public string Name { get; set; }
 
-	public bool StartsWith(char startingChar)
-	{
-		return StartsWith(startingChar.ToString());
-	}
-}
+		/// <summary>
+		/// Gets or sets the sub folders.
+		/// </summary>
+		/// <value>
+		/// The sub folders.
+		/// </value>
+		[XmlElement("folder")]
+		public List<Folder> SubFolders { get; set; }
 
-public class Folders
-{
-	public static IEnumerable<string> FolderNames(string xml, char startingLetter)
-	{
-		var xmlSerializer = new XmlSerializer(typeof(Folder));
-		var folders = (Folder)xmlSerializer.Deserialize(new StringReader(xml));
-
-		var foldersMatchingCharacter = new List<string>();
-		if (folders.StartsWith(startingLetter))
+		/// <summary>
+		/// Startses the with.
+		/// </summary>
+		/// <param name="startingString">The starting string.</param>
+		/// <returns></returns>
+		public bool StartsWith(string startingString)
 		{
-			foldersMatchingCharacter.Add(folders.Name);
+			return Name.StartsWith(startingString);
 		}
-		foldersMatchingCharacter.AddRange(folders.SubFolders.Where(x => x.StartsWith(startingLetter)).Select(x => x.Name));
-		foldersMatchingCharacter.AddRange(folders.SubFolders.SelectMany(x => x.SubFolders).Where(x => x.StartsWith(startingLetter)).Select(x => x.Name));
 
-		return foldersMatchingCharacter;
+		/// <summary>
+		/// Startses the with.
+		/// </summary>
+		/// <param name="startingChar">The starting character.</param>
+		/// <returns></returns>
+		public bool StartsWith(char startingChar)
+		{
+			return StartsWith(startingChar.ToString());
+		}
+	}
+
+	/// <summary>
+	/// The folders.
+	/// </summary>
+	public class Folders
+	{
+		/// <summary>
+		/// Folders the names.
+		/// </summary>
+		/// <param name="xml">The XML.</param>
+		/// <param name="startingLetter">The starting letter.</param>
+		/// <returns></returns>
+		public static IEnumerable<string> FolderNames(string xml, char startingLetter)
+		{
+			XmlSerializer xmlSerializer = new XmlSerializer(typeof(Folder));
+			Folder folders = (Folder)xmlSerializer.Deserialize(new StringReader(xml));
+
+			List<string> foldersMatchingCharacter = new List<string>();
+			if (folders.StartsWith(startingLetter))
+			{
+				foldersMatchingCharacter.Add(folders.Name);
+			}
+			foldersMatchingCharacter.AddRange(folders.SubFolders.Where(x => x.StartsWith(startingLetter)).Select(x => x.Name));
+			foldersMatchingCharacter.AddRange(folders.SubFolders.SelectMany(x => x.SubFolders).Where(x => x.StartsWith(startingLetter)).Select(x => x.Name));
+
+			return foldersMatchingCharacter;
+		}
 	}
 }
