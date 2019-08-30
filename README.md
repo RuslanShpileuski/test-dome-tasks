@@ -1,4 +1,4 @@
-# TESTDOME C# interview questions
+# TESTDOME C# interview tasks
 
 We must always learn new and practice more. Having solid knowledge and technical background is a success key for passing interview. In this repository I'm implementing C# interview tasks supplied by testdome.com [(link to full set of questions)](https://www.testdome.com/d/c-sharp-interview-questions/18).
 
