@@ -12,3 +12,20 @@ We must always learn new and practice more. Having solid knowledge and technical
 - Visual Studio 2019 Version 16.2.3.
 - .NET Core 2.2
 - MSTest
+
+## Tasks
+
+1. Alert Service
+2. Merge Names
+3. Palindrome
+4. Binary Search Tree
+5. Song
+6. User Input
+7. Account Test
+8. Two Sum
+9. Account
+10. Decorator Stream
+11. Folders
+12. Sorted Search
+13. Train Composition
+14. Path
